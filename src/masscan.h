@@ -203,7 +203,7 @@ struct Masscan
 
     /**
      * --shard n/m
-     * This is used for distributin a scan acros multiple "shards". Every
+     * This is used for distribution a scan across multiple "shards". Every
      * shard in the scan must know the total number of shards, and must also
      * know which of those shards is it's identity. Thus, shard 1/5 scans
      * a different range than 2/5. These numbers start at 1, so it's
