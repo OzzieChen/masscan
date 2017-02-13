@@ -1559,7 +1559,9 @@ smack_selftest(void)
         smack_compile(s);
 
         i = 0;
-#define TEST(pat, offset, str) if (pat != id || offset != i) return 1 + fprintf(stderr, "smack: fail %s\n", str)
+
+        #define TEST(pat, offset, str) if (pat != id || offset != i) return 1 + fprintf(stderr, "smack: fail %s\n", str)
+
         id = smack_search_next(s,&state,text, &i,text_length);
         TEST(  8,  10, "PROPFIND");
         id = smack_search_next(s,&state,text, &i,text_length);

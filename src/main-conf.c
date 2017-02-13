@@ -1429,6 +1429,7 @@ masscan_set_parameter(struct Masscan *masscan,
         else if (EQUALS("certs", value))        x = Output_Certs;
         else if (EQUALS("none", value))         x = Output_None;
         else if (EQUALS("redis", value))        x = Output_Redis;
+        else if (EQUALS("simple", value))       x = Output_Simple;
         else {
             LOG(0, "FAIL: unknown output-format: %s\n", value);
             LOG(0, "  hint: 'binary', 'xml', 'grepable', ...\n");

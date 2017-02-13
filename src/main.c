@@ -1540,6 +1540,8 @@ int main(int argc, char *argv[])
      * Once we've read in the configuration, do the operation that was
      * specified
      */
+
+    masscan->op = Operation_Selftest;
     switch (masscan->op) {
     case Operation_Default:
         /* Print usage info and exit */

@@ -1030,7 +1030,7 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
                 ctrl = CTRL_SMALL_WINDOW;
             }
 
-            /* Send request. This actually doens't send the packet right
+            /* Send request. This actually doesn't send the packet right
              * now, but instead queues up a packet that the transmit
              * thread will send soon. */
             tcpcon_send_packet(tcpcon, tcb,

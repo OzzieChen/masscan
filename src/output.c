@@ -447,6 +447,9 @@ output_create(const struct Masscan *masscan, unsigned thread_index)
     case Output_None:
         out->funcs = &null_output;
         break;
+    case Output_Simple:
+        out->funcs = &simple_output;
+        break;
     default:
         out->funcs = &null_output;
         break;

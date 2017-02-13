@@ -1,0 +1,318 @@
+#BEGIN -1067351056 - Simple banner grab results.
+
+[Thu Feb  9 18:56:12 2017
+][60.205.8.140]
+
+
+[Thu Feb  9 18:56:13 2017
+][60.205.8.74]
+HTTP/1.1 404 Not Found
+Server: nginx
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: no-cache, private
+date: Thu, 09 Feb 2017 10:56:13 GMT
+
+4cb2
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" /><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var o=t[n]={exports:{}};e[n][0].call(o.exports,function(t){var o=e[n][1][t];return r(o||t)},o,o.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(e,t,n){function r(){}function o(e,t,n){return function(){return i(e,[(new Date).getTime()].concat(u(arguments)),t?null:this,n),t?void 0:this}}var i=e("handle"),a=e(2),u=e(3),c=e("ee").get("tracer"),f=NREUM;"undefined"==typeof window.newrelic&&(newrelic=f);var s=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(s,function(e,t){f[t]=o(l+t,!0,"api")}),f.addPageAction=o(l+"addPageAction",!0),f.setCurrentRouteName=o(l+"routeName",!0),t.exports=newrelic,f.interaction=function(){return(new r).get()};var d=r.prototype={createTracer:function(e,t){var n={},r=this,o="function"==typeof t;return i(p+"tracer",[Date.now(),e,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[Date.now(),r,o],n),o)try{return t.apply(this,arguments)}finally{c.emit("fn-end",[Date.now()],n)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){d[t]=o(p+t)}),newrelic.noticeError=function(e){"string"==typeof e&&(e=new Error(e)),i("err",[e,(new Date).getTime()])}},{}],2:[function(e,t,n){function r(e,t){var n=[],r="",i=0;for(r in e)o.call(e,r)&&(n[i]=t(r,e[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],3:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,o=n-t||0,i=Array(o<0?0:o);++r<o;)i[r]=e[t+r];return i}t.exports=r},{}],ee:[function(e,t,n){function r(){}function o(e){function t(e){return e&&e instanceof r?e:e?c(e,u,i):i()}function n(n,r,o){if(!p.aborted){e&&e(n,r,o);for(var i=t(o),a=v(n),u=a.length,c=0;c<u;c++)a[c].apply(i,r);var f=s[w[n]];return f&&f.push([y,n,r,i]),i}}function d(e,t){b[e]=v(e).concat(t)}function v(e){return b[e]||[]}function g(e){return l[e]=l[e]||o(n)}function m(e,t){f(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var b={},w={},y={on:d,emit:n,get:g,listeners:v,context:t,buffer:m,abort:a,aborted:!1};return y}function i(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var u="nr@context",c=e("gos"),f=e(2),s={},l={},p=t.exports=o();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(o.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[t]=r,r}var o=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){o.buffer([e],r),o.emit(e,t,n)}var o=e("ee").get("handle");t.exports=r,r.ee=o},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!h++){var e=y.info=NREUM.info,t=l.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return f.abort();c(b,function(t,n){e[t]||(e[t]=n)}),u("mark",["onload",a()],null,"api");var n=l.createElement("script");n.src="https://"+e.agent,t.parentNode.insertBefore(n,t)}}function o(){"complete"===l.readyState&&i()}function i(){u("mark",["domContent",a()],null,"api")}function a(){return(new Date).getTime()}var u=e("handle"),c=e(2),f=e("ee"),s=window,l=s.document,p="addEventListener",d="attachEvent",v=s.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,CT:clearTimeout,XHR:v,REQ:s.Request,EV:s.Event,PR:s.Promise,MO:s.MutationObserver},e(1);var m=""+location,b={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net"
+
+[Thu Feb  9 18:56:16 2017
+][60.205.8.224]
+HTTP/1.1 200 OK
+Date: Thu, 09 Feb 2017 10:56:13 GMT
+Content-Type: text/html
+Content-Length: 3821
+Connection: keep-alive
+Vary: Accept-Encoding
+Accept-Ranges: bytes
+ETag: W/"3821-1475203193000"
+Last-Modified: Fri, 30 Sep 2016 02:39:53 GMT
+Set-Cookie: SERVERID=6319a87efdaaea81b56187b482a8e165|1486637773|1486637773;Path=/
+
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>新华子衿教育</title>
+	<link rel="stylesheet" type="text/css" href="zijinshe-style/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="zijinshe-style/css/default.css">
+	<link rel="stylesheet" type="text/css" href="zijinshe-style/css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="zijinshe-style/css/crosscover.min.css">
+    <link rel="icon" type="image/x-ico" href="zijinshe-style/images/s_logo.ico">
+    <script>
+var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?199b8a0055e193852ba6822737b053b6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+
+        var _hmt1 = _hmt1 || [];
+        (function() {
+            var hm1 = document.createElement("script");
+            hm1.src = "//hm.baidu.com/hm.js?4511e89008be20331be7a150cedbc0af";
+            var s1 = document.getElementsByTagName("script")[0];
+            s1.parentNode.insertBefore(hm1, s1);
+        })();
+ 
+		var curUrl = window.location.href;
+		if(curUrl.indexOf("mail.zijinshe.com")>=0){
+				window.location.href="http://tel.exmail.qq.com/domain/zijinshe.com";
+		}
+	</script>
+</head>
+<body>
+	<div class="crosscover">
+		<div class="crosscover-overlay">
+			<div class="crosscover-island docs-Island">
+				<header class="htmleaf-header">
+                	<img class="logo" src="zijinshe-style/images/logo.png"><br><br>
+                    <img src="zijinshe-style/images/barcode-1.png">
+                    <span>使用微信扫描二维码 开始进行作业辅导</span>
+					<h1>河北省新华书店唯一授权作业辅导平台</h1>	
+				</header>
+                <footer>联系我们 <span>0311-68076735  </span>|    网站备案 <a href="http://www.miitbeian.gov.cn/" target="_black">冀ICP备15003559号-1</a>|    <a href="http://mp.weixin.qq.com/s?__biz=MzA3NzkwODAyNw==&mid=215099081&idx=1&sn=559763fb1b4e89aa8edfaf4f8c6930e5&scene=23&srcid=1005GLLIjGMz6QUa36aT4pfV#rd" target="_black">用户协议</a>|    <a href="http://mp.weixin.qq.com/s?__biz=MzA3NzkwODAyNw==&mid=215097286&idx=1&sn=43e3ecdc06e0fdab968922956f475d42&scene=23&srcid=1005qhFJSCE1NzfyrLfKVaqg#rd" target="_black">免责条款</a></footer>
+			</div>
+		</div>
+		<ul class="crosscover-list">
+			<li><img src="zijinshe-style/images/01.jpg" alt="image01"></li>
+			<li><img src="zijinshe-style/images/02.jpg" alt="image02"></li>
+			<li><img src="zijinshe-style/images/03.jpg" alt="image03"></li>
+			<li><img src="zijinshe-style/images/04.jpg" alt="image04"></li>
+			<li><img src="zijinshe-style/images/05.jpg" alt="image05"></li>
+		</ul>
+	</div>
+    
+    <script src="zijinshe-style/js/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="zijinshe-style/js/jquery.min.js"><\/script>')</script>
+	<script src="zijinshe-style/js/crosscover.min.js"></script>
+	<script type="text/javascript">
+		$(".crosscover").crosscover({
+		    animateInClass:'rollIn',
+		    animateOutClass:'zoomOut',
+		    interval : 5000,
+		    startIndex : 0,
+		    autoPlay : true,
+		    controller : true,
+		    controllerClass  : 'crosscover-controller',
+		    prevClass : 'crosscover-prev',
+		    nextClass : 'crosscover-next',
+		    playerClass : 'crosscover-player',
+		    playerActiveClass : 'is-playing',
+		    playerInnerHtml : '<span class="crosscover-icon-player"></span>',
+		    prevInnerHtml : '<span class="crosscover-icon-prev"></span>',
+		    nextInnerHtml : '<span class="crossc
+
+[Thu Feb  9 18:56:16 2017
+][60.205.8.192]
+HTTP/1.0 400 Bad request
+Cache-Control: no-cache
+Connection: close
+Content-Type: text/html
+
+<html><body><h1>400 Bad request</h1>
+Your browser sent an invalid request.
+</body></html>
+
+
+[Thu Feb  9 18:56:17 2017
+][60.205.8.114]
+HTTP/1.1 200 OK
+Date: Thu, 09 Feb 2017 10:56:17 GMT
+Content-Type: text/html; charset=UTF-8
+Content-Length: 8581
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: Express
+Accept-Ranges: bytes
+Cache-Control: public, max-age=0
+Last-Modified: Fri, 30 Dec 2016 10:25:21 GMT
+ETag: W/"2185-1594f4333d4"
+set-cookie: connect.sid=s%3AjGFBNq-t-Xd0sxWDtv0cH-_Bps1-e4vc.AaFIpcmcFO%2BzhdCD4cj7dIIuB1kXAwr6%2BpMKP5BeI9g; Path=/; HttpOnly
+Set-Cookie: SERVERID=c4a772b8e8e13eb8e66bd13aa88f51ab|1486637777|1486637777;Path=/
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>乐税增值税发票全票信息采集</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="发票真伪查询,发票验真,发票查询,发票明细查询"/>
+<meta name="description" content="便利的一站式全国增值税发票明细信息采集和真伪查询工具，帮助您有效甄别发票真伪，防范收受虚假发票的风险"/>
+<!--[if lt IE 9]>
+<script src="http://cdn2.leshui365.com/vat/static/compatibility/html5shiv_23e126e.js"></script>
+<script src="http://cdn2.leshui365.com/vat/static/compatibility/respond_b890fb8.js"></script>
+<![endif]-->
+<script src="http://cdn2.leshui365.com/vat/static/js/setting_b1aae6c.js" data-main="http://cdn2.leshui365.com/vat/s_p/web/home/js/index_0ea72b8.js"></script>
+<link rel="stylesheet" href="http://cdn2.leshui365.com/vat/s_p/web/home/style/index_b3c44d0.css"/>
+</head>
+<body>
+<div class="container l_home_loginBar noPadding">
+<div class="logo">
+<div class="pic"><a href="http://www.leshui365.com" target="_blank"><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/logo_3a0b67e.jpg"><a></div>
+<div class="name">增值税发票全票信息采集</div>
+</div>
+<div class="user">
+<div class="login"><a href="javascript:;">登录</a></div>
+</div>
+</div>
+<div class="container-fluit">
+<div class="turnPic">
+<div class="pic2" style="display:block;"></div>
+<div class="control">
+<div id="btn_left" class="left"></div>
+<div id="btn_right" class="right"></div>
+<div class="point1"></div>
+</div>
+</div>
+</div>
+<div class="container_fluit l_product_bg">
+<div class="container l_home_production">
+<h2>区域广&nbsp;&sdot;&nbsp;种类全</h2>
+<h4><span><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/title_left_180ee56.png"></span>&nbsp;WIDE AREA&nbsp;&sdot;&nbsp;ALL KINDS&nbsp;<span><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/title_right_a63376c.png"></span></h4>
+<div class="row">
+<div class="col-xs-6 text_align_center"><br><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/pic_product_01_86c4b93.png"></div>
+<div class="col-xs-6"><p>目前支持北京、天津、上海、重庆、大连、宁波、厦门、青岛、河北、山西、内蒙、辽宁等36个地区的增值税普通发票、增值税电子普通发票、增值税专用发票、公路内河货物运输业统一发票和机动车销售统一发票查询</p></div>
+</div>
+</div>
+</div>
+<div class="container_fluit">
+<div class="container l_home_production">
+<h2>多终端&nbsp;&sdot;&nbsp;高效率</h2>
+<h4><span><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/title_left_180ee56.png"></span>&nbsp;MULTI TERMINAL&nbsp;&sdot;&nbsp;HIGH EFFCIENCY&nbsp;<span><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/title_right_a63376c.png"></span></h4>
+<div class="row">
+<div class="col-xs-6"><p>支持多终端，包括电脑Web版、手机Web版、微信版和即将推出的App；支持快捷的输入方式：手机端和电脑端都支持扫描二维码查询</p></div>
+<div class="col-xs-6 text_align_center"><br><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/pic_product_02_cdc37dd.png"></div>
+</div>
+</div>
+</div>
+<div class="container_fluit l_product_bg">
+<div class="container l_home_production">
+<h2>查详情&nbsp;&sdot;&nbsp;辨真伪</h2>
+<h4><span><img src="http://cdn2.leshui365.com/vat/s_p/web/home/images/title_left_s_d85bf0b.png"></span>&nbsp;DETALS OF THE INVESTIGATION&nbsp;&sdot;&nbsp;DISTINGUISH TRUE AND FALSE&nbsp;<span><img src="http://cdn2
+
+[Thu Feb  9 18:57:17 2017
+][60.205.8.156]
+HTTP/1.1 200 OK
+Date: Thu, 09 Feb 2017 10:56:17 GMT
+Content-Type: text/html; charset=utf8
+Content-Length: 75
+Connection: keep-alive
+
+
+<html>
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+
+[Thu Feb  9 18:57:17 2017
+][60.205.8.93]
+HTTP/1.1 200 OK
+Date: Thu, 09 Feb 2017 10:57:17 GMT
+Content-Type: text/html
+Content-Length: 101506
+Connection: keep-alive
+Vary: Accept-Encoding
+Cache-Control: private
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: SERVERID=2e3ed77d417f480f83b117dd7847f924|1486637837|1486637837;Path=/
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <link rel="icon" href="http://img.bj.wezhan.cn/2031421_favicon.ico" />
+    <link rel="shortcut icon" href="http://img.bj.wezhan.cn/2031421_favicon.ico" />
+    <link rel="bookmark" href="http://img.bj.wezhan.cn/2031421_favicon.ico" />
+
+    <title>云&#183;速成美站阿里云北京节点</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="关键词" />
+
+    <link rel="stylesheet" href="http://img.bj.wezhan.cn/Plugins/Designer/Content/css/base.pc.css" type="text/css" />
+    <link href="http://img.bj.wezhan.cn/Plugins/Designer/Content/mw-iconfont/iconfont.css" rel="stylesheet" />
+    <link href="http://img.bj.wezhan.cn/Plugins/Designer/Content/css/pagerStyle/pager.css" rel="stylesheet" />
+    <link href="http://img.bj.wezhan.cn/Plugins/Designer/Content/css/base/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/content/sitefiles2031/2031421/css/pc/1265_zh-CN.css" type="text/css" />
+    <link rel="stylesheet" href="http://img.bj.wezhan.cn/Plugins/Designer/Content/css/pagerStyle/pager.css" /> 
+
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Scripts/public.common.min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/jquery.lazyload.min.js"></script>
+    <script src="http://img.bj.wezhan.cn/Plugins/Designer/Script/kino.razor.min.js"></script>
+        <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/underscore-min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/jquery.slider.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Scripts/jquery.color.js"></script>
+<script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/SmartViews.Common/Script/searchExt.js"></script>
+
+    <script language='javascript' type='text/javascript' id='yibuHeaderScript'>
+</script>
+
+
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/velocity.min.js"></script>
+    <script type="text/javascript" src="http://img.bj.wezhan.cn/Plugins/Designer/Script/velocity.ui.min.js"></script>
+        <script type="text/javascript" src="http://img.bj.wezhan.cn/Scripts/jquery.validatestar.min.js"></script>
+
+
+    
+</head>
+<body>
+    <input type="hidden" id="pageinfo" value="1265" data-type="" data-device="pc" data-entityid="" />
+    <div  id="view_layout_1_843" class="mainSamrtView yibuSmartViewMargin"   >
+<div class='yibuFrameContent layout_Block4_Item0' style='border-style:none;'>
+ <style type="text/css">
+/* Style */
+
+.page-wrap { clear:both; margin:0 auto; padding:0; width:auto; height:100%;}
+
+.page-wrap .header,.page-wrap .main-wrap .main,.page-wrap .footer { position:relative; clear:both; margin:0 auto; padding:0;}
+.page-wrap .main-wrap { clear:both
+
+[Thu Feb  9 18:58:17 2017
+][60.205.8.67]
+HTTP/1.1 302 Found
+Date: Thu, 09 Feb 2017 10:57:17 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+Location: http://60.205.8.67/lboss/
+
+0
+
+
+
+[Thu Feb  9 18:59:23 2017
+][60.205.8.117]
+HTTP/1.1 200 OK
+Server: nginx/1.6.1
+Date: Thu, 09 Feb 2017 10:58:17 GMT
+Content-Type: application/x-gzip;charset=utf-8
+Content-Length: 1192
+Connection: keep-alive
+Set-Cookie: JSESSIONID=BFEC6F05098FA39EBD948D45B021A11B; Path=/
+Content-Disposition: weather.3gbbk.gz
+Content-Language: zh-CN
+
+
+

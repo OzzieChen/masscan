@@ -55,6 +55,7 @@ enum OutputFormat {
     Output_None         = 0x0400,
     Output_Certs        = 0x0800,
     Output_All          = 0xFFBF,   /* not supported */
+    Output_Simple       = 0x1000,
 };
 
 
