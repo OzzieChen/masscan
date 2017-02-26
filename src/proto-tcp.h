@@ -39,7 +39,7 @@ tcpcon_set_parameter(struct TCP_ConnectionTable *tcpcon,
  *      on your transmit rate (the faster the transmit rate, the more
  *      outstanding connections you'll have). This function will automatically
  *      round this number up to the nearest power of 2, or round it down
- *      if it causes malloc() to not be able to allocate enoug memory.
+ *      if it causes malloc() to not be able to allocate enough memory.
  * @param entropy
  *      Seed for syn-cookie randomization
  */

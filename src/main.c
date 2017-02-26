@@ -310,6 +310,7 @@ infinite:
      * ports */
     range = rangelist_count(&masscan->targets)
             * rangelist_count(&masscan->ports);
+    LOG(0, "OZZIE: blackrock_rounds = ", masscan->blackrock_rounds);
     blackrock_init(&blackrock, range, seed, masscan->blackrock_rounds);
 
     /* Calculate the 'start' and 'end' of a scan. One reason to do this is
@@ -400,7 +401,7 @@ infinite:
                 port_me = src_port;
             }
             cookie = syn_cookie(ip_them, port_them, ip_me, port_me, entropy);
-//printf("0x%08x 0x%08x 0x%04x 0x%08x 0x%04x    \n", cookie, ip_them, port_them, ip_me, port_me);
+            printf("OZZIE: cookie - 0x%08x, ip_them - 0x%08x, port_them - 0x%04x, ip_me - 0x%08x, port_me - 0x%04x    \n", cookie, ip_them, port_them, ip_me, port_me);
             /*
              * SEND THE PROBE
              *  This is sorta the entire point of the program, but little
@@ -752,7 +753,7 @@ receive_thread(void *v)
         /* verify: my IP address */
         if (!is_my_ip(&parms->src, ip_me))
             continue;
-//printf("0x%08x 0x%08x 0x%04x 0x%08x 0x%04x    \n", cookie, ip_them, port_them, ip_me, port_me);
+        //printf("0x%08x 0x%08x 0x%04x 0x%08x 0x%04x    \n", cookie, ip_them, port_them, ip_me, port_me);
 
 
         /*
@@ -879,6 +880,7 @@ receive_thread(void *v)
 
                 /* If this contains payload, handle that */
                 if (parsed.app_length) {
+                    printf("\n--px = %s\n", px + parsed.app_offset);
                     tcpcon_handle(tcpcon, tcb, TCP_WHAT_DATA,
                         px + parsed.app_offset, parsed.app_length,
                         secs, usecs, seqno_them);
@@ -1541,7 +1543,7 @@ int main(int argc, char *argv[])
      * specified
      */
 
-    masscan->op = Operation_Selftest;
+    // masscan->op = Operation_Selftest;
     switch (masscan->op) {
     case Operation_Default:
         /* Print usage info and exit */

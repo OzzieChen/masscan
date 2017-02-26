@@ -1,0 +1,4 @@
+send_first = true
+s.msg = GET / HTTP/1.0\r\nUser-Agent: Processor/1.0\r\nAccept: */*\r\n\r\n
+r.banner = true
+r.goto = output

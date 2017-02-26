@@ -26,7 +26,7 @@
 
     For "heartbeat", we grab the so-called "heartbleed" exploit info.
     For "server hello", we grab which cipher is used
-    For "certificate", we grab the szubjectName of the server
+    For "certificate", we grab the subjectName of the server
  
  
     !!!!!!!!!!!!  BIZARRE CODE ALERT !!!!!!!!!!!!!!!
@@ -58,6 +58,7 @@
 
 
 /**
+ * 将state++，判断i++后是否超过length（msg的末尾），如果是则退出，否则直接掉到下个case里继续
  * Fugly macro for doing state-machine parsing. I know it's bad, but
  * it makes stepping through the code in a debugger so much easier.
  */
@@ -336,7 +337,7 @@ parse_server_hello(
 
 
 /*****************************************************************************
- * This parses the certificates from the server. Thise contains an outer
+ * This parses the certificates from the server. These contains an outer
  * length field for all certificates, and then uses a length field for
  * each certificate. The length fields are 3 bytes long.
  *
@@ -869,7 +870,7 @@ parse_alert(
  * +--------+--------+
  *
  * This allows simple state-machine parsing. We need only 6 states, one for
- * each byte, and then a "content" state tracking the contents of the recod
+ * each byte, and then a "content" state tracking the contents of the record
  * until we've parsed "length" bytes, then back to the initial state.
  *
  *****************************************************************************/

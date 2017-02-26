@@ -10,7 +10,7 @@
 #endif
 
 /***************************************************************************
- * Go gather some entropy (aka. randmoness) to seed hashing with.
+ * Go gather some entropy (aka. randomness) to seed hashing with.
  *
  * NOTE: Mostly it's here to amuse cryptographers with its lulz.
  ***************************************************************************/

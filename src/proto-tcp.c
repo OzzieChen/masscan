@@ -980,7 +980,7 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
          * timers and try again.
          */
 
-        /* Send "ACK" to acknowlege their "SYN-ACK" */
+        /* Send "ACK" to acknowledge their "SYN-ACK" */
         tcpcon_send_packet(tcpcon, tcb,
                     0x10,
                     0, 0, 0);
@@ -1065,7 +1065,6 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
             struct InteractiveData more;
             more.payload = 0;
             more.length =0;
-
             if ((unsigned)(tcb->seqno_them - seqno_them) > payload_length)  {
                 tcpcon_send_packet(tcpcon, tcb,
                         0x10,
@@ -1104,8 +1103,9 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
             tcb->seqno_them += (unsigned)payload_length;
             
             /* acknowledge the bytes sent */
+            LOG(1, "OZZIE: more.payload = %s, more.length = %u", more.payload, more.length);
             if (more.length) {
-                //printf("." "sending more data %u bytes\n", more.length);
+                printf("OZZIE: ." "sending more data %u bytes\n", more.length);
                 tcpcon_send_packet(tcpcon, tcb, 0x18, more.payload, more.length, 0);
                 tcb->seqno_me += (uint32_t)more.length;
             } else {
@@ -1116,7 +1116,7 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
 
             if (err == STATE_DONE) {
                 tcpcon_send_packet(tcpcon, tcb,
-                    0x11,
+                    0x11 /*OZZIE: ack_fin*/,
                     0, 0, 0);
                 tcb->seqno_me++;
                 tcpcon_destroy_tcb(tcpcon, tcb, Reason_StateDone);

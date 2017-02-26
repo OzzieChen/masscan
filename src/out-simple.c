@@ -89,11 +89,12 @@ simple_out_status(struct Output *out, FILE *fp, time_t timestamp, int status,
         reason_string(reason, reason_buffer, sizeof(reason_buffer)),
         ttl
         );*/
-    fprintf(fp, "%u.%u.%u.%u\r\n",
+    fprintf(fp, "0:%u.%u.%u.%u:%d\r\n",
         (ip>>24)&0xFF,
         (ip>>16)&0xFF,
         (ip>> 8)&0xFF,
-        (ip>> 0)&0xFF
+        (ip>> 0)&0xFF,
+            port
         );
 }
 

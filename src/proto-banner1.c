@@ -376,7 +376,7 @@ banner1_selftest()
 
     for (i=0; i<length; i++) {
         struct InteractiveData more = {0,0};
-
+        printf("%d: %c\n", i, *(px+i));
         banner1_parse(
                     b,
                     tcb_state,
