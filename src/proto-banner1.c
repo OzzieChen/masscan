@@ -15,6 +15,8 @@
 #include "proto-pop3.h"
 #include "proto-vnc.h"
 #include "masscan-app.h"
+#include "service-state.h"
+
 #include <ctype.h>
 #include <stdlib.h>
 #include <string.h>

@@ -25,7 +25,7 @@
 #include "main-globals.h"
 #include "crypto-base64.h"
 #include "proto-interactive.h"
-
+#include "service-state.h"
 
 
 /***************************************************************************
@@ -52,7 +52,7 @@ struct TCP_Control_Block
     struct TimeoutEntry timeout[1];
 
     unsigned char ttl;
-    unsigned tcpstate:4;
+    unsigned tcpstate:4; /* STATE_SYN_SENT, STATE_READY_TO_SEND, STATE_PAYLOAD_SENT, STATE_WAITING_FOR_RESPONSE */
 
 
     unsigned short payload_length;
@@ -62,6 +62,12 @@ struct TCP_Control_Block
     struct BannerOutput banout;
 
     struct ProtocolState banner1_state;
+
+
+    /**
+     * Service sending state
+     */
+     struct SendingState *sending_state;
 };
 
 struct TCP_ConnectionTable {
@@ -83,6 +89,12 @@ struct TCP_ConnectionTable {
     struct Banner1 *banner1;
     OUTPUT_REPORT_BANNER report_banner;
     struct Output *out;
+
+    /**
+     * Service detect
+     */
+    struct ServiceStateTable *stateTable;
+    int is_send_first:1;
 };
 
 enum {
@@ -297,6 +309,17 @@ tcpcon_set_parameter(struct TCP_ConnectionTable *tcpcon,
         x->hello_length = base64_decode((char*)x->hello, value_length, value, value_length);
 
         banner1->tcp_payloads[port] = x;
+    }
+
+    /**
+     * 2017-03-01 Service detect
+     */
+    if (name_equals(name, "custom-service-detect")) {
+        tcpcon->stateTable = (struct ServiceStateTable *)value;
+    }
+
+    if (name_equals(name, "hello-first")) {
+        tcpcon->is_send_first = 1;
     }
 
 }
@@ -892,7 +915,7 @@ handle_ack(
     uint32_t ackno)
 {
 
-    LOG(4,  "%u.%u.%u.%u - %u-sending, %u-reciving\n",
+    LOG(4,  "%u.%u.%u.%u - %u-sending, %u-receiving\n",
             (tcb->ip_them>>24)&0xFF, (tcb->ip_them>>16)&0xFF, (tcb->ip_them>>8)&0xFF, (tcb->ip_them>>0)&0xFF,
             tcb->seqno_me - ackno,
             ackno - tcb->ackno_them
@@ -1013,7 +1036,39 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
     case STATE_READY_TO_SEND<<8 | TCP_WHAT_TIMEOUT:
         /* if we have a "hello" message to send to the server,
          * then send it */
-        if (banner1->tcp_payloads[tcb->port_them]) {
+
+        /**
+         * Service detect, sending hello
+         */
+        if (tcpcon->stateTable && tcpcon->is_send_first) {
+            struct SendingState *s0 = tcpcon->stateTable->sendingStateEntry[0];
+            size_t x_len = 0;
+            const unsigned char *x;
+
+            x_len = strlen(s0->msg); // FIXME: is it correct?
+            x = s0->msg;
+
+            /* Send request. This actually doesn't send the packet right
+             * now, but instead queues up a packet that the transmit
+             * thread will send soon. */
+            tcpcon_send_packet(tcpcon, tcb,
+                               0x18,
+                               x, x_len, 0);
+            LOGip(4, tcb->ip_them, tcb->port_them,
+                  "service state: [s0] sending payload %u bytes\n",
+                  x_len);
+
+            tcb->sending_state = s0;
+
+            /* Increment our sequence number */
+            tcb->seqno_me += (uint32_t)x_len;
+
+            /* change our state to reflect that we are now waiting for
+             * acknowledgement of the data we've sent */
+            tcb->tcpstate = STATE_PAYLOAD_SENT;
+
+            tcb->banner1_state.app_proto = PROTO_CUSTOM;
+        } else if (banner1->tcp_payloads[tcb->port_them]) {
             size_t x_len = 0;
             const unsigned char *x;
             unsigned ctrl = 0;
@@ -1061,6 +1116,9 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
     case STATE_READY_TO_SEND<<8 | TCP_WHAT_DATA:
     case STATE_WAITING_FOR_RESPONSE<<8 | TCP_WHAT_DATA:
         {
+            LOGip(1, tcb->ip_them, tcb->port_them, "OZZIE: tcb->seqno_them = %u, seqno_them = %u, payload_length = %u\n",
+                    tcb->seqno_them, seqno_them, payload_length);
+            LOG(1, "service state: tcb->sending_state = s[%d]\n", tcb->sending_state->id);
             unsigned err;
             struct InteractiveData more;
             more.payload = 0;
@@ -1084,7 +1142,24 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
                         0, 0, 0);
                 return;
             }
-            
+
+            /**
+             * Service detect
+             * receive the response, now process this corresponding sending state
+             */
+            if (tcb->sending_state != NULL) {
+                struct SendingState *s = tcb->sending_state;
+                struct RecvingState *r;
+                LOG(1, "service state: s[%d] receive response, turning to r[%d]\n",
+                    tcb->sending_state->id,
+                    s->waiting_id);
+                while(1) {
+                    r = tcpcon->stateTable->recvingStateEntry[s->waiting_id];
+                    // break only when the state go to sending state
+                    break;
+                }
+
+            }
 
             /* [--banners]
              * This is an important part of the system, where the TCP
@@ -1103,7 +1178,7 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
             tcb->seqno_them += (unsigned)payload_length;
             
             /* acknowledge the bytes sent */
-            LOG(1, "OZZIE: more.payload = %s, more.length = %u", more.payload, more.length);
+            LOGip(1, tcb->ip_them, tcb->port_them, "OZZIE: more.payload = %s, more.length = %u\n", more.payload, more.length);
             if (more.length) {
                 printf("OZZIE: ." "sending more data %u bytes\n", more.length);
                 tcpcon_send_packet(tcpcon, tcb, 0x18, more.payload, more.length, 0);

@@ -54,6 +54,7 @@
 #include "proto-sctp.h"
 #include "script.h"
 #include "main-readrange.h"
+#include "service-state.h"      /* service detection */
 
 #include <assert.h>
 #include <limits.h>
@@ -160,6 +161,8 @@ struct ThreadPair {
 
     size_t thread_handle_xmit;
     size_t thread_handle_recv;
+
+    struct ServiceStateTable *serviceStateTable;
 };
 
 
@@ -647,6 +650,19 @@ receive_thread(void *v)
                                  "hello-timeout",
                                  strlen(foo),
                                  foo);
+        }
+
+        /**
+         * Service detect
+         */
+        if (masscan->is_custom_service_detect) {
+            tcpcon_set_parameter(tcpcon, "custom-service-detect",
+                                 sizeof(parms->serviceStateTable),
+                                 parms->serviceStateTable);
+        }
+
+        if (masscan->is_hello_first) {
+            tcpcon_set_parameter(tcpcon, "hello-first", 0, 0);
         }
         
         for (pay = masscan->tcp_payloads; pay; pay = pay->next) {
@@ -1230,6 +1246,16 @@ main_scan(struct Masscan *masscan)
             }
         }
 
+        /**
+         * Configure service state table
+         * // FIXME: Fix parameters to actual count of sending/recving states
+         */
+         if (masscan->is_custom_service_detect) {
+             parms->serviceStateTable = create_service_state_table(MAX_SENDING_STATE_COUNT,
+                                                                   MAX_RECVING_STATE_COUNT,
+                                                                   masscan->service_patterns_filename);
+         }
+
 
         /*
          * Start the scanning thread.
@@ -1469,6 +1495,7 @@ int main(int argc, char *argv[])
                 sizeof(masscan->output.rotate.directory),
                 ".");
     masscan->is_capture_cert = 1;
+
 
     /*
      * Pre-parse the command-line

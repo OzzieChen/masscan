@@ -28,6 +28,7 @@ enum ApplicationProtocol {
     PROTO_HEARTBLEED,
     PROTO_VNC_RFB,
     PROTO_SAFE,
+    PROTO_CUSTOM,           /* 2017-03-02 custom service detect */
 };
 
 const char *

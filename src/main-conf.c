@@ -1658,6 +1658,14 @@ masscan_set_parameter(struct Masscan *masscan,
             masscan->wait = (unsigned)parseInt(value);
     } else if (EQUALS("webxml", name)) {
         masscan_set_parameter(masscan, "stylesheet", "http://nmap.org/svn/docs/nmap.xsl");
+    } else if (EQUALS("service-detect", name)) {
+        masscan->is_custom_service_detect = 1; // FIXME: now default set to 1(true), should fix
+    } else if (EQUALS("hello-first", name)) {
+        masscan->is_hello_first = 1; // FIXME: now default set to 1(true), should fix
+    } else if (EQUALS("service-patterns-file", name)) {
+        strcpy_s(masscan->service_patterns_filename,
+                 sizeof(masscan->service_patterns_filename),
+                 value);
     } else {
         fprintf(stderr, "CONF: unknown config option: %s=%s\n", name, value);
     }

@@ -177,6 +177,12 @@ struct Masscan
     unsigned is_readscan:1;     /* --readscan, Operation_Readscan */
     unsigned is_heartbleed:1;   /* --heartbleed, scan for this vuln */
     unsigned is_poodle_sslv3:1; /* --script poodle, scan for this vuln */
+
+    /**
+     * Custom service detect things
+     */
+    unsigned is_custom_service_detect:1; // TODO: "--?", name the instruction
+    unsigned is_hello_first:1;  // TODO: "--?", name the instruction
         
     /**
      * Wait forever for responses, instead of the default 10 seconds
@@ -389,6 +395,11 @@ struct Masscan
     struct {
         const char *name;
     } script;
+
+    /**
+     * Custom service detect things
+     */
+    char service_patterns_filename[256];
 };
 
 
