@@ -847,21 +847,45 @@ parse_banner(
     struct InteractiveData *more)
 {
     assert(tcb->banout.max_length);
-    
-    banner1_parse(
-                                    tcpcon->banner1,
-                                    &tcb->banner1_state,
-                                    payload,
-                                    payload_length,
-                                    &tcb->banout,
-                                    more);
 
-    if (tcb->banner1_state.state == STATE_DONE)
-        return STATE_DONE;
-    else if (tcb->banner1_state.is_done)
-        return STATE_DONE;
-    else
-        return 0;
+    /**
+     * Custom service detect
+     */
+    if (tcpcon->stateTable) {
+        LOG(1, "service state: s[%d] receive response, turning to r[%d]\n",
+            tcb->sending_state->id,
+            tcb->sending_state->waiting_id);
+        int new_sending_state_id;
+        new_sending_state_id = service_detect_parse(tcpcon->stateTable,
+                                                    tcb->sending_state,
+                                                    payload,
+                                                    payload_length,
+                                                    &tcb->banout,
+                                                    more);
+        if (new_sending_state_id == GOTO_FIN) {
+            return STATE_DONE;
+        } else {
+            tcb->sending_state = tcpcon->stateTable->sendingStateEntry[new_sending_state_id];
+            return 0;
+        }
+    }
+
+    else {
+        banner1_parse(
+                tcpcon->banner1,
+                &tcb->banner1_state,
+                payload,
+                payload_length,
+                &tcb->banout,
+                more);
+
+        if (tcb->banner1_state.state == STATE_DONE)
+            return STATE_DONE;
+        else if (tcb->banner1_state.is_done)
+            return STATE_DONE;
+        else
+            return 0;
+    }
 }
 
 
@@ -1143,25 +1167,7 @@ tcpcon_handle(struct TCP_ConnectionTable *tcpcon,
                 return;
             }
 
-            /**
-             * Service detect
-             * receive the response, now process this corresponding sending state
-             */
-            if (tcb->sending_state != NULL) {
-                struct SendingState *s = tcb->sending_state;
-                struct RecvingState *r;
-                LOG(1, "service state: s[%d] receive response, turning to r[%d]\n",
-                    tcb->sending_state->id,
-                    s->waiting_id);
-                while(1) {
-                    r = tcpcon->stateTable->recvingStateEntry[s->waiting_id];
-                    // break only when the state go to sending state
-                    break;
-                }
-
-            }
-
-            /* [--banners]
+            /* [--banners] && custom service detect
              * This is an important part of the system, where the TCP
              * stack passes incoming packet payloads off to the application
              * layer protocol parsers. This is where, in Sockets API, you

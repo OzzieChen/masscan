@@ -1660,6 +1660,7 @@ int main(int argc, char *argv[])
             x += rte_ring_selftest();
             x += mainconf_selftest();
             x += zeroaccess_selftest();
+            x += service_detect_selftest();
 
 
             if (x != 0) {

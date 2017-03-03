@@ -6,8 +6,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/proto-http.c" line="367" />
     <bookmark url="file://$PROJECT_DIR$/src/main.c" description="真正发包" line="361" />
     <bookmark url="file://$PROJECT_DIR$/src/main.c" line="621" />
-    <bookmark url="file://$PROJECT_DIR$/src/proto-tcp.c" line="1070" />
-    <bookmark url="file://$PROJECT_DIR$/src/proto-tcp.c" description="more" line="1182" />
+    <bookmark url="file://$PROJECT_DIR$/src/proto-tcp.c" line="1094" />
+    <bookmark url="file://$PROJECT_DIR$/src/proto-tcp.c" description="more" line="1188" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" buildAllGenerated="true">
     <generated />
@@ -18,23 +18,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1474319d-19bd-4fad-a79a-33addfd7a13a" name="Default" comment="新建service-state.c/.h文件用于模式集的构建。&#10;主要状态为：SendingState 和 RecvingState，分别表示发送态和接收回复态。&#10;&#10;1. 修改了masscan相应启动配置，加入了对custom-service-detect的支持；&#10;2. 模式处现使用假数据进行填充；&#10;3. 已将相应结构嵌入tcb，可以进行第一次hello发送，并能成功提取发送状态&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 检测调用SMACK进行模式匹配是否成功&#10;3. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/service-state.c" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/service-state.h" />
+    <list default="true" id="1474319d-19bd-4fad-a79a-33addfd7a13a" name="Default" comment="实现初步依据模式交互&#10;对于80端口，交互时设置了Keep-alive属性以保持长连接&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;3. review项目中的TODO和FIXME&#10;4. 对交互进行测试&#10;5. 时间问题：调研masscan发包后的等待时间，判断是否足够&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/ozziechen.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/ozziechen.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/hello-file.txt" afterPath="$PROJECT_DIR$/conf/hello-file.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/http-banner.conf" afterPath="$PROJECT_DIR$/conf/http-banner.conf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/ssl-banner.conf" afterPath="$PROJECT_DIR$/conf/ssl-banner.conf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/demo-banner-grab2.txt" afterPath="$PROJECT_DIR$/output/demo-banner-grab2.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/http-banner-grab.xml" afterPath="$PROJECT_DIR$/output/http-banner-grab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/ssl-banner-grab.xml" afterPath="$PROJECT_DIR$/output/ssl-banner-grab.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main-conf.c" afterPath="$PROJECT_DIR$/src/main-conf.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/output/simple-http.txt" afterPath="$PROJECT_DIR$/output/simple-http.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main.c" afterPath="$PROJECT_DIR$/src/main.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masscan-app.h" afterPath="$PROJECT_DIR$/src/masscan-app.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/masscan.h" afterPath="$PROJECT_DIR$/src/masscan.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/proto-banner1.c" afterPath="$PROJECT_DIR$/src/proto-banner1.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/proto-http.c" afterPath="$PROJECT_DIR$/src/proto-http.c" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/proto-tcp.c" afterPath="$PROJECT_DIR$/src/proto-tcp.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service-state.c" afterPath="$PROJECT_DIR$/src/service-state.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/service-state.h" afterPath="$PROJECT_DIR$/src/service-state.h" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,14 +45,14 @@
     <favorites_list name="masscan" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5071492">
+    <splitter split-orientation="horizontal" split-proportion="0.45659164">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="298">
-                  <caret line="1068" column="0" lean-forward="false" selection-start-line="1068" selection-start-column="0" selection-end-line="1068" selection-end-column="0" />
+                <state relative-caret-position="908">
+                  <caret line="1264" column="0" lean-forward="false" selection-start-line="1264" selection-start-column="0" selection-end-line="1264" selection-end-column="0" />
                   <folding>
                     <element signature="e#2851#2935#0" expanded="true" />
                   </folding>
@@ -66,11 +60,41 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="output.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/output.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="917">
+                  <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="proto-tcp.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/proto-tcp.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="414">
-                  <caret line="1110" column="29" lean-forward="true" selection-start-line="1110" selection-start-column="29" selection-end-line="1110" selection-end-column="29" />
+                <state relative-caret-position="124">
+                  <caret line="1240" column="71" lean-forward="false" selection-start-line="1240" selection-start-column="71" selection-end-line="1240" selection-end-column="71" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="event-timeout.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/event-timeout.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="325">
+                  <caret line="66" column="7" lean-forward="false" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="logger.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/logger.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="839">
+                  <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -79,8 +103,8 @@
           <file leaf-file-name="service-state.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/service-state.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1188">
-                  <caret line="291" column="2" lean-forward="false" selection-start-line="288" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
+                <state relative-caret-position="75">
+                  <caret line="350" column="9" lean-forward="false" selection-start-line="350" selection-start-column="7" selection-end-line="350" selection-end-column="9" />
                   <folding>
                     <element signature="e#47#73#0" expanded="true" />
                   </folding>
@@ -88,71 +112,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="proto-http.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/proto-http.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="proto-banner1.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/proto-banner1.h">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="718">
-                  <caret line="123" column="23" lean-forward="false" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="proto-banner1.c" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/proto-banner1.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="484">
-                  <caret line="121" column="41" lean-forward="true" selection-start-line="121" selection-start-column="41" selection-end-line="121" selection-end-column="41" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="proto-http.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/proto-http.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="247">
-                  <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+                <state relative-caret-position="204">
+                  <caret line="122" column="49" lean-forward="true" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ssl-banner-grab.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/output/ssl-banner-grab.xml">
+          <file leaf-file-name="proto-banner1.h" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/proto-banner1.h">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="main-conf.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main-conf.c">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="335">
-                  <caret line="486" column="69" lean-forward="false" selection-start-line="486" selection-start-column="69" selection-end-line="486" selection-end-column="69" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="http-banner-grab.xml" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/output/http-banner-grab.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+                <state relative-caret-position="192">
+                  <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
                   <folding />
                 </state>
               </provider>
@@ -161,34 +135,102 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="proto-tcp.c" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/proto-tcp.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="483">
-                  <caret line="194" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+                <state relative-caret-position="17666">
+                  <caret line="848" column="0" lean-forward="false" selection-start-line="848" selection-start-column="0" selection-end-line="848" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="masscan.h" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/masscan.h">
+          <file leaf-file-name="proto-http.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-http.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="177" column="67" lean-forward="false" selection-start-line="177" selection-start-column="67" selection-end-line="177" selection-end-column="67" />
-                  <folding>
-                    <element signature="e#8226#10763#1" expanded="false" />
-                  </folding>
+                <state relative-caret-position="3228">
+                  <caret line="418" column="0" lean-forward="false" selection-start-line="418" selection-start-column="0" selection-end-line="418" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="proto-http.c" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/proto-http.c">
+          <file leaf-file-name="proto-smtp.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-smtp.c">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1056">
-                  <caret line="425" column="12" lean-forward="false" selection-start-line="425" selection-start-column="12" selection-end-line="425" selection-end-column="12" />
+                <state relative-caret-position="438">
+                  <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="proto-snmp.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-snmp.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-442">
+                  <caret line="278" column="48" lean-forward="false" selection-start-line="278" selection-start-column="48" selection-end-line="278" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="proto-ftp.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-ftp.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="100">
+                  <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="smack1.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/smack1.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="19950">
+                  <caret line="1314" column="20" lean-forward="false" selection-start-line="1314" selection-start-column="20" selection-end-line="1314" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="smack.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/smack.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2889">
+                  <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="proto-banout.h" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-banout.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="322">
+                  <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="proto-banout.c" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/proto-banout.c">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="325">
+                  <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="service-state.h" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/service-state.h">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="132">
+                  <caret line="67" column="23" lean-forward="false" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -200,18 +242,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>STATE_WAITING_FOR_RESPONSE</find>
-      <find>74</find>
-      <find>60.205.8.15</find>
-      <find>LogI</find>
-      <find>OZZIE</find>
-      <find>re-sending</find>
-      <find>.15</find>
-      <find>parse_banner</find>
-      <find>conf</find>
-      <find>masscan_set_parameter</find>
-      <find>File</find>
-      <find>is_</find>
       <find>hello-file</find>
       <find>filename</find>
       <find>-c</find>
@@ -224,12 +254,24 @@
       <find>r-&gt;id</find>
       <find>ThreadPair</find>
       <find>response</find>
-      <find>service</find>
-      <find>service state</find>
       <find>service state: tcb</find>
       <find>HERE</find>
       <find>http_change</find>
       <find>HERE!</find>
+      <find>search</find>
+      <find>snmp_banner_oid</find>
+      <find>service state</find>
+      <find>.55</find>
+      <find>more</find>
+      <find>s1</find>
+      <find>.28</find>
+      <find>length match</find>
+      <find>self</find>
+      <find>[s</find>
+      <find>[r</find>
+      <find>s[1]</find>
+      <find>r3</find>
+      <find>service</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -264,14 +306,15 @@
         <option value="$PROJECT_DIR$/src/proto-banout.c" />
         <option value="$PROJECT_DIR$/src/proto-ssl.c" />
         <option value="$PROJECT_DIR$/src/main-conf.c" />
-        <option value="$PROJECT_DIR$/src/service-state.h" />
-        <option value="$PROJECT_DIR$/src/proto-banner1.h" />
         <option value="$PROJECT_DIR$/src/masscan-app.h" />
+        <option value="$PROJECT_DIR$/src/proto-http.c" />
+        <option value="$PROJECT_DIR$/src/proto-banner1.h" />
         <option value="$PROJECT_DIR$/src/proto-banner1.c" />
+        <option value="$PROJECT_DIR$/src/proto-snmp.c" />
+        <option value="$PROJECT_DIR$/src/service-state.h" />
+        <option value="$PROJECT_DIR$/src/main.c" />
         <option value="$PROJECT_DIR$/src/proto-tcp.c" />
         <option value="$PROJECT_DIR$/src/service-state.c" />
-        <option value="$PROJECT_DIR$/src/main.c" />
-        <option value="$PROJECT_DIR$/src/proto-http.c" />
       </list>
     </option>
   </component>
@@ -632,12 +675,21 @@
       <workItem from="1486976368655" duration="52518000" />
       <workItem from="1487756351257" duration="4042000" />
       <workItem from="1487767746521" duration="5961000" />
-      <workItem from="1487840501835" duration="74030000" />
+      <workItem from="1487840501835" duration="74786000" />
+      <workItem from="1488421988926" duration="22502000" />
     </task>
+    <task id="LOCAL-00001" summary="新建service-state.c/.h文件用于模式集的构建。&#10;主要状态为：SendingState 和 RecvingState，分别表示发送态和接收回复态。&#10;&#10;1. 修改了masscan相应启动配置，加入了对custom-service-detect的支持；&#10;2. 模式处现使用假数据进行填充；&#10;3. 已将相应结构嵌入tcb，可以进行第一次hello发送，并能成功提取发送状态&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 检测调用SMACK进行模式匹配是否成功&#10;3. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;">
+      <created>1488420985983</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1488420985983</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190255000" />
+    <option name="totallyTimeSpent" value="213513000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -650,20 +702,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-540" width="2560" height="1440" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11855061" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11815675" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2759124" sideWeight="0.49841145" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2459854" sideWeight="0.48411438" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7072993" sideWeight="0.48411438" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329927" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6788321" sideWeight="0.5079428" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1270073" sideWeight="0.49682286" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36423358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43868613" sideWeight="0.48888007" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14257582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62919706" sideWeight="0.49364576" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36423358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6620438" sideWeight="0.48888007" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14257582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4029197" sideWeight="0.49364576" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16569343" sideWeight="0.49205717" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2678832" sideWeight="0.49205717" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -701,7 +753,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
     <MESSAGE value="新建service-state.c/.h文件用于模式集的构建。&#10;主要状态为：SendingState 和 RecvingState，分别表示发送态和接收回复态。&#10;&#10;1. 修改了masscan相应启动配置，加入了对custom-service-detect的支持；&#10;2. 模式处现使用假数据进行填充；&#10;3. 已将相应结构嵌入tcb，可以进行第一次hello发送，并能成功提取发送状态&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 检测调用SMACK进行模式匹配是否成功&#10;3. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="新建service-state.c/.h文件用于模式集的构建。&#10;主要状态为：SendingState 和 RecvingState，分别表示发送态和接收回复态。&#10;&#10;1. 修改了masscan相应启动配置，加入了对custom-service-detect的支持；&#10;2. 模式处现使用假数据进行填充；&#10;3. 已将相应结构嵌入tcb，可以进行第一次hello发送，并能成功提取发送状态&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 检测调用SMACK进行模式匹配是否成功&#10;3. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;" />
+    <MESSAGE value="实现初步依据模式交互&#10;对于80端口，交互时设置了Keep-alive属性以保持长连接&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;3. review项目中的TODO和FIXME&#10;4. 对交互进行测试&#10;5. 时间问题：调研masscan发包后的等待时间，判断是否足够&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现初步依据模式交互&#10;对于80端口，交互时设置了Keep-alive属性以保持长连接&#10;&#10;TODO：&#10;1. 读取patterns文件并生成模式集&#10;2. 优化sending/recving state的前期配置数量（现直接设置为MAX）&#10;3. review项目中的TODO和FIXME&#10;4. 对交互进行测试&#10;5. 时间问题：调研masscan发包后的等待时间，判断是否足够&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -715,11 +768,6 @@
           <url>file://$PROJECT_DIR$/src/smack1.c</url>
           <line>1139</line>
           <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-banout.c</url>
-          <line>250</line>
-          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/proto-banout.c</url>
@@ -741,25 +789,10 @@
           <line>381</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-banner1.c</url>
-          <line>182</line>
-          <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-http.c</url>
-          <line>223</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/smack1.c</url>
           <line>1367</line>
           <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/smack1.c</url>
-          <line>1381</line>
-          <option name="timeStamp" value="49" />
         </line-breakpoint>
         <line-breakpoint type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/smack1.c</url>
@@ -782,24 +815,29 @@
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-http.c</url>
-          <line>318</line>
-          <option name="timeStamp" value="56" />
+          <url>file://$PROJECT_DIR$/src/service-state.c</url>
+          <line>182</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-http.c</url>
-          <line>246</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/proto-http.c</url>
-          <line>299</line>
-          <option name="timeStamp" value="62" />
+          <url>file://$PROJECT_DIR$/src/service-state.c</url>
+          <line>187</line>
+          <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/proto-tcp.c</url>
-          <line>1149</line>
-          <option name="timeStamp" value="85" />
+          <line>1190</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/service-state.c</url>
+          <line>214</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/service-state.c</url>
+          <line>159</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -812,67 +850,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="95" />
+      <option name="time" value="111" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="CMakeRunConfiguration">
-        <watch expression="px[i]" language="ObjectiveC" />
-        <watch expression="px[2]" language="ObjectiveC" />
-        <watch expression="log_begin" language="ObjectiveC" />
-        <watch expression="*px" language="ObjectiveC" />
-        <watch expression="pstate-&gt;state" language="ObjectiveC" />
-        <watch expression="sizeof(*current_state)" language="ObjectiveC" />
-        <watch expression="smack-&gt;char_to_symbol[10]" language="ObjectiveC" />
-        <watch expression="(130826 &gt;&gt; 8)" language="ObjectiveC" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/rte-ring.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="167" column="7" lean-forward="false" selection-start-line="167" selection-start-column="7" selection-end-line="167" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/syn-cookie.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-preprocess.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="139" column="32" lean-forward="false" selection-start-line="139" selection-start-column="32" selection-end-line="139" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/masscan.8">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="12" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-preprocess.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="13" lean-forward="false" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rand-lcg.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="311" column="13" lean-forward="false" selection-start-line="311" selection-start-column="13" selection-end-line="311" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -888,7 +874,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="89" column="21" lean-forward="false" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -900,27 +885,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/event-timeout.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="89" column="55" lean-forward="false" selection-start-line="89" selection-start-column="55" selection-end-line="89" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proto-smtp.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-smtp.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="39" column="35" lean-forward="false" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -928,15 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="71" column="39" lean-forward="true" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logger.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -968,7 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,7 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="4" lean-forward="false" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -984,7 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="570">
           <caret line="38" column="41" lean-forward="true" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,7 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-968">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1000,15 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/output.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1054">
-          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,7 +970,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-134">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1032,73 +977,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/smack.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-banout.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-banout.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/smack1.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="381" column="0" lean-forward="false" selection-start-line="381" selection-start-column="0" selection-end-line="381" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-ssl.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="1237" column="45" lean-forward="false" selection-start-line="1237" selection-start-column="45" selection-end-line="1237" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-ssl.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/masscan.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="2655">
           <caret line="177" column="67" lean-forward="false" selection-start-line="177" selection-start-column="67" selection-end-line="177" selection-end-column="67" />
           <folding>
             <element signature="e#8226#10763#1" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service-state.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1115,7 +1003,7 @@
         <state relative-caret-position="-503">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1124,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1132,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
           <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,74 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-ftp.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="43" column="30" lean-forward="false" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/masscan-app.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/service-state.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="291" column="2" lean-forward="false" selection-start-line="288" selection-start-column="0" selection-end-line="292" selection-end-column="0" />
-          <folding>
-            <element signature="e#47#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-http.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="38" lean-forward="false" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-banner1.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="123" column="23" lean-forward="false" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-banner1.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="121" column="41" lean-forward="true" selection-start-line="121" selection-start-column="41" selection-end-line="121" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="1068" column="0" lean-forward="false" selection-start-line="1068" selection-start-column="0" selection-end-line="1068" selection-end-column="0" />
-          <folding>
-            <element signature="e#2851#2935#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/proto-http.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="125" column="0" lean-forward="true" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/output/ssl-banner-grab.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1228,26 +1046,222 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/output/http-banner-grab.xml">
+    <entry file="file://$PROJECT_DIR$/src/main-conf.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="7410">
+          <caret line="494" column="39" lean-forward="false" selection-start-line="494" selection-start-column="39" selection-end-line="494" selection-end-column="39" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/script-sslv3.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-ssl.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1030">
+          <caret line="1434" column="32" lean-forward="false" selection-start-line="1434" selection-start-column="32" selection-end-line="1434" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-x509.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/unusedparm.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-ssl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/masscan-app.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="17" column="15" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-http.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-dns.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="308" column="17" lean-forward="false" selection-start-line="308" selection-start-column="17" selection-end-line="308" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-smtp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="45" column="9" lean-forward="false" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-snmp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="278" column="48" lean-forward="false" selection-start-line="278" selection-start-column="48" selection-end-line="278" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smack1.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19950">
+          <caret line="1314" column="20" lean-forward="false" selection-start-line="1314" selection-start-column="20" selection-end-line="1314" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/smack.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2889">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-ftp.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-banout.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/output.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="917">
+          <caret line="176" column="0" lean-forward="false" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="908">
+          <caret line="1264" column="0" lean-forward="false" selection-start-line="1264" selection-start-column="0" selection-end-line="1264" selection-end-column="0" />
+          <folding>
+            <element signature="e#2851#2935#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-banout.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service-state.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="67" column="23" lean-forward="false" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logger.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="839">
+          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/event-timeout.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="66" column="7" lean-forward="false" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/service-state.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="350" column="9" lean-forward="false" selection-start-line="350" selection-start-column="7" selection-end-line="350" selection-end-column="9" />
+          <folding>
+            <element signature="e#47#73#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proto-tcp.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="1110" column="29" lean-forward="true" selection-start-line="1110" selection-start-column="29" selection-end-line="1110" selection-end-column="29" />
+        <state relative-caret-position="124">
+          <caret line="1240" column="71" lean-forward="false" selection-start-line="1240" selection-start-column="71" selection-end-line="1240" selection-end-column="71" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main-conf.c">
+    <entry file="file://$PROJECT_DIR$/src/proto-banner1.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="486" column="69" lean-forward="false" selection-start-line="486" selection-start-column="69" selection-end-line="486" selection-end-column="69" />
+        <state relative-caret-position="280">
+          <caret line="182" column="0" lean-forward="false" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-http.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="122" column="49" lean-forward="true" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/http-banner-grab.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="67" column="167" lean-forward="false" selection-start-line="67" selection-start-column="167" selection-end-line="67" selection-end-column="167" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proto-banner1.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
           <folding />
         </state>
       </provider>

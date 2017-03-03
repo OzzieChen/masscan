@@ -6,14 +6,18 @@
 #define MASSCAN_SERVICE_STATE_H
 
 #include "smack.h"
+#include "proto-banner1.h"
 
 #include <string.h>
 
-#define INFINITY -100
+#define INFINITY ((unsigned short)~0)
 #define MAX_SENDING_STATE_COUNT 10
 #define MAX_RECVING_STATE_COUNT 10
 #define MAX_PATTERN_COUNT 10
 #define GOTO_FIN -1000
+#define RANDOM_PORT 0
+
+extern struct ProtocolParserStream banner_serviceDetect;
 
 /**
  * Define the states of sending.
@@ -24,7 +28,6 @@ struct SendingState {
     char msg[300];
     // struct RecvingState *waiting; /* If current state receives a response, change to its waiting state */
     unsigned short waiting_id; // The recving state id that current sending state is waiting for
-    // struct SendingState *next;
 };
 
 struct ServicePattern {
@@ -65,8 +68,6 @@ struct RecvingState {
         unsigned short min;
         unsigned short max;
     } len_range;
-
-    // struct RecvingState *next;
 };
 
 struct ServiceStateTable {
@@ -87,11 +88,23 @@ void service_pattern_init(struct ServiceStateTable *stateTable, char *filename);
 void service_pattern_set_parameter(struct ServiceStateTable *stateTable, char *name, char *value);
 
 /**
+ * Parse the service detection's response.
+ * Process the recving patterns until meet any sending states.
+ * @return new sending state or GOTO_FIN(aka. STATE_DONE)
+ */
+int service_detect_parse(const struct ServiceStateTable *stateTable,
+                         const struct SendingState *s,
+                         const unsigned char *px, size_t length,
+                         struct BannerOutput *banout,
+                         struct InteractiveData *more);
+
+/**
  * Turn patterns to automaton
  * @param state inited receiving state
  */
 void recving_state_pattern_init(struct RecvingState *state, char *smack_name);
 
+int service_detect_selftest(void);
 void selftest_fake_data(struct ServiceStateTable *stateTable);
 
 /**
