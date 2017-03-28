@@ -26,7 +26,6 @@ extern struct ProtocolParserStream banner_serviceDetect;
 struct SendingState {
     unsigned short id;
     char msg[300];
-    // struct RecvingState *waiting; /* If current state receives a response, change to its waiting state */
     unsigned short waiting_id; // The recving state id that current sending state is waiting for
 };
 
